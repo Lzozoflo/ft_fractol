@@ -6,12 +6,13 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:27:43 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/14 16:16:08 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/16 17:55:21 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "mlx.h"
-# include "ft_idk.h"
+# include "ft_fractol.h"
+# include "libft.h"
 
 // void    fill_image(t_data *data, int width, int height, unsigned int color, int start)
 // {
@@ -28,9 +29,17 @@
 // 		}
 // 	}
 // }
+void	ft_color_pixel(int color, int x, int y, t_data *data)
+{
+	int	index;
+
+	index = (y * data->img.line_len) + (x * (data->img.bpp / 8));
+	*(unsigned int *)(data->img.addr + index) = color;
+}
 
 
-int mandelbrot(double real, double imag)
+
+int	mandelbrot(double real, double imag)
 {
 	double z_real = 0.0;
 	double z_imag = 0.0;
@@ -49,17 +58,19 @@ int mandelbrot(double real, double imag)
 	return iter;
 }
 
-void draw_mandelbrot(t_data *data)
+void ft_draw_mandelbrot(t_data *data)
 {
 	int	x,	y;
 	double	real,	imag;
 	int	color;
-	double zoom = 1;
-	double scale_real = (3.0 / zoom) / WIDTH;
-	double scale_imag = (3.0 / zoom) / HEIGHT;
-	double offset_real = -1.5 / zoom;
-	double offset_imag = -1.5 / zoom;
 
+
+	double scale_real = 3.0 / WIDTH;
+	double scale_imag = 3.0 / HEIGHT;
+	double offset_real = -2.2;
+	double offset_imag = -1.5;
+
+	mlx_clear_window(data->mlx, data->win);
 	for (y = 0; y < HEIGHT; y++)
 	{
 		for (x = 0; x < WIDTH; x++)
@@ -69,15 +80,12 @@ void draw_mandelbrot(t_data *data)
 
 			int iter = mandelbrot(real, imag);
 
-			// Calcul de la couleur (basé sur le nombre d'itérations)
 			if (iter == MAX_ITER)
-				color = 0x000000; // Noir (partie de l'ensemble de Mandelbrot)
+				color = 0x000000;
 			else
 				color = (iter * 255) / MAX_ITER;
 
-			// Utilisation de mlx pour dessiner le pixel
-			int index = (y * data->line_length) + (x * (data->bits_per_pixel / 8));
-			*(unsigned int *)(data->addr + index) = color;
+			ft_color_pixel(color, x, y, data);
 		}
 	}
 }

@@ -6,23 +6,41 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:59:35 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/14 10:30:18 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/16 17:52:56 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_idk.h"
-
+#include "ft_fractol.h"
+#include "libft.h"
 
 int	ft_key_press(int keycode, void *param)
 {
 	t_data	*data;
 
+	ft_printf("keycode : %d\n", keycode);
 	data = (t_data *)param;
 	if (keycode == ESC)
 	{
 		mlx_loop_end(data->mlx);
 		ft_clean_close(data, 0);
 	}
+	else if (keycode == PLUS)
+	{
+		data->fractal.zoom += 0.05;
+		ft_draw_mandelbrot(data);
+		mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
+	}
+	else if (keycode == MINUS)
+	{
+		data->fractal.zoom -= 0.05;
+		ft_draw_mandelbrot(data);
+		mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
+	}
+	// else if (keycode == ESC)
+	// {
+	// 	mlx_loop_end(data->mlx);
+	// 	ft_clean_close(data, 0);
+	// }
 	return (1);
 }
 
