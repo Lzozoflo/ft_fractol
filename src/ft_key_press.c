@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:59:35 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/16 17:52:56 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/17 14:56:55 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,18 @@ int	ft_key_press(int keycode, void *param)
 		ft_clean_close(data, 0);
 	}
 	else if (keycode == PLUS)
-	{
-		data->fractal.zoom += 0.05;
-		ft_draw_mandelbrot(data);
-		mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
-	}
+		data->fractal.zoom *= 1.05;
 	else if (keycode == MINUS)
-	{
-		data->fractal.zoom -= 0.05;
-		ft_draw_mandelbrot(data);
-		mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
-	}
-	// else if (keycode == ESC)
-	// {
-	// 	mlx_loop_end(data->mlx);
-	// 	ft_clean_close(data, 0);
-	// }
+		data->fractal.zoom *= 0.95;
+	else if (keycode == UP)
+		data->fractal.offset_imag += 0.05;
+	else if (keycode == DOWN)
+		data->fractal.offset_imag -= 0.05;
+	else if (keycode == LEFT)
+		data->fractal.offset_real += 0.05;
+	else if (keycode == RIGHT)
+		data->fractal.offset_real -= 0.05;
+	ft_draw(data);
 	return (1);
 }
 

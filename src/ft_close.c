@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 08:46:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/16 17:52:27 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/17 09:34:06 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include <stdlib.h>
 
-int	ft_cross_close(t_data *data)
+int	ft_cross(t_data *data)
 {
 	mlx_loop_end(data->mlx);
 	ft_clean_close(data, 0);

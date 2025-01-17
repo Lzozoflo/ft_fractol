@@ -2,7 +2,7 @@
 
 NAME			=	fdfexec
 cc				=	cc
-FLAGS			=	-Wall -Wextra -Werror -MMD -MP -O3
+CFLAGS			=	-Wall -Wextra -Werror -MMD -MP -O3
 CFLAGS_MORE		=	-Weverything -Wpadded
 RM				=	rm -fr
 

@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:27:43 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/16 17:55:21 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/17 14:45:05 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,18 +65,18 @@ void ft_draw_mandelbrot(t_data *data)
 	int	color;
 
 
-	double scale_real = 3.0 / WIDTH;
-	double scale_imag = 3.0 / HEIGHT;
-	double offset_real = -2.2;
-	double offset_imag = -1.5;
+	double max_y = 3.0 / WIDTH;
+	double max_x = 3.0 / HEIGHT;
+	double min_y = -2.2;
+	double min_x = -1.5;
 
 	mlx_clear_window(data->mlx, data->win);
 	for (y = 0; y < HEIGHT; y++)
 	{
 		for (x = 0; x < WIDTH; x++)
 		{
-			real = x * scale_real + offset_real;
-			imag = y * scale_imag + offset_imag;
+			real = x * max_y + min_y;
+			imag = y * max_x + min_x;
 
 			int iter = mandelbrot(real, imag);
 
@@ -117,17 +117,17 @@ void ft_draw_mandelbrot(t_data *data)
 //     double real, imag;
 //     int color;
 // 	double zoom = 1.5; // Réduction du zoom (valeurs plus petites donnent plus de détails)
-// 	double scale_real = (3.0 / zoom) / WIDTH;
-// 	double scale_imag = (3.0 / zoom) / HEIGHT;
-// 	double offset_real = -1.5 / zoom;
-// 	double offset_imag = -1.5 / zoom;
+// 	double max_y = (3.0 / zoom) / WIDTH;
+// 	double max_x = (3.0 / zoom) / HEIGHT;
+// 	double min_y = -1.5 / zoom;
+// 	double min_x = -1.5 / zoom;
 
 //     for (y = 0; y < HEIGHT; y++)
 //     {
 //         for (x = 0; x < WIDTH; x++)
 //         {
-//             real = x * scale_real + offset_real;
-//             imag = y * scale_imag + offset_imag;
+//             real = x * max_y + min_y;
+//             imag = y * max_x + min_x;
 
 //             int iter = julia(real, imag, c_real, c_imag);
 
