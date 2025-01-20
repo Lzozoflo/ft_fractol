@@ -1,9 +1,9 @@
 .PHONY: all clean fclean re f fclear c clear libmlx libft
 
-NAME			=	fdfexec
+NAME			=	fractol
 cc				=	cc
 CFLAGS			=	-Wall -Wextra -Werror -MMD -MP -O3
-CFLAGS_MORE		=	-Weverything -Wpadded
+CFLAGS_MORE		=	-Weverything -Wno-padded -Wno-strict-prototypes -Wno-reserved-id-macro -Wmissing-prototypes
 RM				=	rm -fr
 
 
@@ -19,7 +19,9 @@ D_SRC			=		src/
 D_OBJ			=		object/
 D_INC			=		inc/
 
-
+# Source Directories
+D_EVENT			=		event/
+D_FRACTAL		=		fractal/
 
 #############################################################################################
 #																							#
@@ -29,11 +31,19 @@ D_INC			=		inc/
 
 INC				=		ft_fractol.h
 
-SRC				=		main.c			\
-						ft_close.c		\
-						ft_key_press.c	\
-ft_mandelbrot.c
-# test.c
+SRC				=		main.c				\
+						ft_init.c			\
+						ft_close.c			\
+						ft_param.c
+
+SRC_EVENT		=		ft_event.c			\
+						ft_is_keycode.c		\
+						ft_julia_event.c
+
+SRC_FRACTAL		=		ft_draw.c			\
+						ft_mandelbrot.c		\
+						ft_julia.c
+
 
 NAME_LIBMLX		=		./minilibx-linux/libmlx_Linux.a
 MLX_FLAG		=		-Lminilibx-linux -lmlx -lX11 -lXext -lbsd -lm
@@ -47,8 +57,9 @@ MLX_FLAG_I		=		-Imlx_linux -Iminilibx-linux
 
 
 # All src in his Src Directories
-SRCS			=		$(addprefix $(D_SRC), $(SRC))
-
+SRCS			=		$(addprefix $(D_SRC), $(SRC))						\
+						$(addprefix $(D_SRC)$(D_EVENT), $(SRC_EVENT))		\
+						$(addprefix $(D_SRC)$(D_FRACTAL), $(SRC_FRACTAL))	\
 
 # Changing all source directories to object directories
 OBJS			=		$(subst $(D_SRC), $(D_OBJ), $(SRCS:.c=.o))
@@ -80,9 +91,11 @@ NAME_LIB		=		./libft/libft.a
 
 all : libmlx libft $(NAME)
 
+# debug-pierre-copyright :
+# 	$(MAKE) --no-print-directory $(NAME) CFLAGS="$(CFLAGS_MORE)" CC="clang"
 
 $(NAME)			:	$(OBJS)
-			$(CC) $(FLAGS) $(OBJS) $(MLX_FLAG) $(NAME_LIB) -o $(NAME)
+			$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAG) $(NAME_LIB) -o $(NAME)
 
 
 $(D_OBJ)%.o		:	$(D_SRC)%.c Makefile $(INCS)

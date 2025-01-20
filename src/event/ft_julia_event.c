@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_close.c                                         :+:      :+:    :+:   */
+/*   ft_julia_event.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 08:46:51 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/18 13:50:29 by fcretin          ###   ########.fr       */
+/*   Created: 2025/01/20 07:26:20 by fcretin           #+#    #+#             */
+/*   Updated: 2025/01/20 08:20:00 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fractol.h"
 #include "libft.h"
-#include <stdlib.h>
 
-int	ft_cross(t_data *data)
+void	ft_move_base_point(int keycode, t_fractal*f)
 {
-	mlx_loop_end(data->mlx);
-	ft_clean_close(data, 0);
-	exit (0);
-}
-
-int	ft_clean_close(t_data *data, int error)
-{
-	if (data->win)
-		mlx_destroy_window(data->mlx, data->win);
-	if (data->img.img_ptr)
-		mlx_destroy_image(data->mlx, data->img.img_ptr);
-	if (data->mlx)
-	{
-		mlx_destroy_display(data->mlx);
-		free(data->mlx);
-	}
-	ft_printf("Exiting program.\n");
-	exit(error);
+	if (keycode == C)
+		f->c_real *= 1.25;
+	else if (keycode == V)
+		f->c_real *= 0.99;
+	else if (keycode == B)
+		f->c_imag *= 1.025;
+	else if (keycode == N)
+		f->c_imag *= 0.99;
 }
