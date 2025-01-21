@@ -2,7 +2,7 @@
 
 NAME			=	fractol
 cc				=	cc
-CFLAGS			=	-Wall -Wextra -Werror -MMD -MP -O3
+CFLAGS			=	-Wall -Wextra -Werror -MMD -MP -Ofast
 CFLAGS_MORE		=	-Weverything -Wno-padded -Wno-strict-prototypes -Wno-reserved-id-macro -Wmissing-prototypes
 RM				=	rm -fr
 
@@ -23,6 +23,7 @@ D_INC			=		inc/
 D_EVENT			=		event/
 D_FRACTAL		=		fractal/
 
+
 #############################################################################################
 #																							#
 #										// SOURCE											#
@@ -36,9 +37,10 @@ SRC				=		main.c				\
 						ft_close.c			\
 						ft_param.c
 
-SRC_EVENT		=		ft_event.c			\
-						ft_is_keycode.c		\
-						ft_julia_event.c
+SRC_EVENT		=		ft_is_keycode.c		\
+						ft_julia_event.c	\
+						ft_key_event.c		\
+						ft_mouse_event.c
 
 SRC_FRACTAL		=		ft_draw.c			\
 						ft_mandelbrot.c		\
@@ -59,7 +61,7 @@ MLX_FLAG_I		=		-Imlx_linux -Iminilibx-linux
 # All src in his Src Directories
 SRCS			=		$(addprefix $(D_SRC), $(SRC))						\
 						$(addprefix $(D_SRC)$(D_EVENT), $(SRC_EVENT))		\
-						$(addprefix $(D_SRC)$(D_FRACTAL), $(SRC_FRACTAL))	\
+						$(addprefix $(D_SRC)$(D_FRACTAL), $(SRC_FRACTAL))
 
 # Changing all source directories to object directories
 OBJS			=		$(subst $(D_SRC), $(D_OBJ), $(SRCS:.c=.o))

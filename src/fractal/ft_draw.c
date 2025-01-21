@@ -6,13 +6,13 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 12:39:37 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/20 12:54:17 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/21 21:36:39 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fractol.h"
 
-void	ft_color_pixel(int color, int x, int y, t_data *data)
+static void	ft_color_pixel(int color, int x, int y, t_data *data)
 {
 	t_image	img;
 	int		index;
@@ -22,32 +22,37 @@ void	ft_color_pixel(int color, int x, int y, t_data *data)
 	*(unsigned int *)(data->img.addr + index) = color;
 }
 
-// (r % 256, 0, 0)
-// int (r, g, b) {
-// 	return (r << 16 | g << 8 | b )
-// }
-
-int	ft_color(int iter, t_fractal *f)
+static int	ft_color(int iter, t_fractal f, t_rgb rgb)
 {
-	if (iter == f->accuracy)
+	int	r;
+	int	g;
+	int	b;
+
+	if (iter == f.accuracy)
 		return (0x000000);
-	else
-		return ((iter * 255) / 8);
+	r = (iter * rgb.red) % 256;
+	g = (iter * rgb.greed) % 256;
+	b = (iter * rgb.blue) % 256;
+	return ((r << 16) | (g << 8) | b);
 }
 
-void	ft_draw_fractal(t_data *data)
+static void	ft_draw_fractal(t_data *data, int (*f)(t_fractal, int, int))
 {
-	int	color;
-	int	x;
-	int	y;
+	t_fractal	fractal;
+	t_rgb		rgb;
+	int			color;
+	int			x;
+	int			y;
 
 	y = -1;
+	rgb = data->rgb;
+	fractal = data->fractal;
 	while (++y < WIN_SIZE)
 	{
 		x = -1;
 		while (++x < WIN_SIZE)
 		{
-			color = data->f(data, x, y);
+			color = ft_color(f(fractal, x, y), fractal, rgb);
 			ft_color_pixel(color, x, y, data);
 		}
 	}
@@ -56,9 +61,8 @@ void	ft_draw_fractal(t_data *data)
 void	ft_who_draw(t_data *data)
 {
 	if (data->name == MANDELBROT)
-		data->f = ft_mandelbrot;
-	else if (data->name == JULIA)
-		data->f = ft_julia;
-	ft_draw_fractal(data);
+		ft_draw_fractal(data, ft_mandelbrot);
+	else if (data->name == JULIA || data->name == JULIA_WITH_PARAM)
+		ft_draw_fractal(data, ft_julia);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
 }

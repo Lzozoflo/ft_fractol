@@ -6,31 +6,39 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 12:27:58 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/20 13:11:26 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/21 21:44:28 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fractol.h"
 
-inline int	ft_is_arrow(int keycode)
+inline int	ft_is_arrow_key(int keycode)
 {
 	return (keycode == UP || keycode == DOWN
 		|| keycode == LEFT || keycode == RIGHT);
 }
 
-inline int	ft_is_accuracy(int keycode)
+inline int	ft_is_accuracy_key(int keycode)
 {
-	return (keycode == PLUS || keycode == MINUS);
+	return (keycode == NUM_PAD_PLUS || keycode == NUM_PAD_MINUS);
 }
 
-inline int	ft_is_mv_base_point(int keycode, int name)
+inline int	ft_is_mv_base_point_key(int keycode, int name)
 {
-	return (name == JULIA
+	return ((name == JULIA || name == JULIA_WITH_PARAM)
 		&& (keycode == C || keycode == V || keycode == B || keycode == N));
 }
 
-inline int	ft_is_one(int keycode, int name)
+inline int	ft_is_rbg_key(int keycode)
 {
-	return (ft_is_arrow(keycode) || ft_is_accuracy(keycode)
-		|| ft_is_mv_base_point(keycode, name));
+	return (keycode == NUM_PAD_4 || keycode == NUM_PAD_1
+		|| keycode == NUM_PAD_5 || keycode == NUM_PAD_2
+		|| keycode == NUM_PAD_6 || keycode == NUM_PAD_3);
+}
+
+inline int	ft_is_one_key(int keycode, int name)
+{
+	return (ft_is_arrow_key(keycode) || ft_is_accuracy_key(keycode)
+		|| ft_is_mv_base_point_key(keycode, name) || ft_is_rbg_key(keycode)
+		|| keycode == PLUS || keycode == MINUS);
 }
