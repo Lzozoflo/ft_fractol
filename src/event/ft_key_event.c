@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:59:35 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/21 12:52:51 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/22 10:07:46 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ static void	ft_change_base_value_rgb(int keycode, t_rgb *rgb)
 	else if (keycode == NUM_PAD_1)
 		rgb->red -= 2;
 	else if (keycode == NUM_PAD_5)
-		rgb->greed += 2;
+		rgb->green += 2;
 	else if (keycode == NUM_PAD_2)
-		rgb->greed -= 2;
+		rgb->green -= 2;
 	else if (keycode == NUM_PAD_6)
 		rgb->blue += 2;
 	else if (keycode == NUM_PAD_3)

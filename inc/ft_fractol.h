@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/21 14:18:44 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/22 10:07:46 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@
 # define JULIA_WITH_PARAM 0
 # define JULIA 1
 # define MANDELBROT 2
+# define BURNING_SHIP 3
 
 typedef struct s_fractal
 {
@@ -85,7 +86,7 @@ typedef struct s_image
 typedef struct s_rgb
 {
 	int			red;
-	int			greed;
+	int			green;
 	int			blue;
 }				t_rgb;
 
@@ -146,5 +147,6 @@ int		ft_init(t_data *data);
 */
 int		ft_mandelbrot(t_fractal f, int x, int y);
 int		ft_julia(t_fractal f, int x, int y);
+int		ft_burning_ship(t_fractal f, int x, int y);
 
 #endif

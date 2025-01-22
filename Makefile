@@ -3,7 +3,7 @@
 NAME			=	fractol
 cc				=	cc
 CFLAGS			=	-Wall -Wextra -Werror -MMD -MP -Ofast
-CFLAGS_MORE		=	-Weverything -Wno-padded -Wno-strict-prototypes -Wno-reserved-id-macro -Wmissing-prototypes
+CFLAGSS			=	-Weverything -Wno-padded
 RM				=	rm -fr
 
 
@@ -30,11 +30,12 @@ D_FRACTAL		=		fractal/
 #																							#
 #############################################################################################
 
+
 INC				=		ft_fractol.h
 
 SRC				=		main.c				\
-						ft_init.c			\
 						ft_close.c			\
+						ft_init.c			\
 						ft_param.c
 
 SRC_EVENT		=		ft_is_keycode.c		\
@@ -42,7 +43,8 @@ SRC_EVENT		=		ft_is_keycode.c		\
 						ft_key_event.c		\
 						ft_mouse_event.c
 
-SRC_FRACTAL		=		ft_draw.c			\
+SRC_FRACTAL		=		ft_burning_ship.c	\
+						ft_draw.c			\
 						ft_mandelbrot.c		\
 						ft_julia.c
 
@@ -50,6 +52,7 @@ SRC_FRACTAL		=		ft_draw.c			\
 NAME_LIBMLX		=		./minilibx-linux/libmlx_Linux.a
 MLX_FLAG		=		-Lminilibx-linux -lmlx -lX11 -lXext -lbsd -lm
 MLX_FLAG_I		=		-Imlx_linux -Iminilibx-linux
+
 
 #############################################################################################
 #																							#
@@ -93,8 +96,6 @@ NAME_LIB		=		./libft/libft.a
 
 all : libmlx libft $(NAME)
 
-# debug-pierre-copyright :
-# 	$(MAKE) --no-print-directory $(NAME) CFLAGS="$(CFLAGS_MORE)" CC="clang"
 
 $(NAME)			:	$(OBJS)
 			$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAG) $(NAME_LIB) -o $(NAME)
@@ -110,6 +111,7 @@ libmlx			:
 
 libft			:
 			$(MAKE) -C libft
+
 
 #############################################################################################
 #																							#
@@ -146,7 +148,7 @@ f				:	fclean
 fclear			:	fclean
 
 
-#to see what variables did
-debug			:
-	@echo "Debug: $(all)"
  -include $(DEPS)
+
+# debug-pierre-copyright :
+# 	$(MAKE) --no-print-directory $(NAME) CFLAGS="$(CFLAGS_MORE)" CC="clang"

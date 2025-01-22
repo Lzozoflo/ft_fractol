@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 08:24:15 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/21 22:05:00 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/22 19:09:04 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,13 @@ int	ft_help_param(void)
 	ft_printf("+-----------------------------------------------------+\n");
 	ft_printf("|                                                     |\n");
 	ft_printf("|   Empty Param ---> ./fractol <param>                |\n");
-	ft_printf("|   Available :                                       |\n");
+	ft_printf("|                                                     |\n");
+	ft_printf("|   Setting Key : --Help_key, -H                      |\n");
+	ft_printf("|                                                     |\n");
+	ft_printf("|   Fractal Available :                               |\n");
 	ft_printf("|   --Mandelbrot, -M                                  |\n");
 	ft_printf("|   --Julia, -J  >>  Optional   <-/+1.3>   <-/+1.3>   |\n");
-	ft_printf("|   Setting Key : --Help_key, -H                      |\n");
+	ft_printf("|   --Burning_ship, -B                                |\n");
 	ft_printf("|                                                     |\n");
 	ft_printf("|   Exemple : ./fractol --Julia -1.453 1.589          |\n");
 	ft_printf("|                                                     |\n");
@@ -80,6 +83,23 @@ int	ft_julia_param(t_data *data, char **param)
 	return (1);
 }
 
+int	ft_is_mandelbrot_buring_ship(int *name, char **param)
+{
+	if (!ft_strncmp(param[1], "--Mandelbrot", 12)
+		|| !ft_strncmp(param[1], "-M", 2))
+	{
+		*name = MANDELBROT;
+		return (1);
+	}
+	else if (!ft_strncmp(param[1], "--Burning_ship", 14)
+		|| !ft_strncmp(param[1], "-B", 2))
+	{
+		*name = BURNING_SHIP;
+		return (1);
+	}
+	return (0);
+}
+
 int	ft_param(int ac, char **param, t_data *data)
 {
 	if (ac == 1)
@@ -94,11 +114,10 @@ int	ft_param(int ac, char **param, t_data *data)
 		return (1);
 	}
 	else if (!ft_strncmp(param[1], "--Mandelbrot", 12)
-		|| !ft_strncmp(param[1], "-M", 2))
-	{
-		data->name = MANDELBROT;
-		return (1);
-	}
+		|| !ft_strncmp(param[1], "-M", 2)
+		|| !ft_strncmp(param[1], "--Burning_ship", 14)
+		|| !ft_strncmp(param[1], "-B", 2))
+		return (ft_is_mandelbrot_buring_ship(&data->name, param));
 	if (ac == 4 && ((ft_strncmp(param[1], "--Julia", 7) == 0) \
 		|| (ft_strncmp(param[1], "-J", 2) == 0)))
 		return (ft_julia_param(data, param));

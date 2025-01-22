@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 08:19:50 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/21 21:56:25 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/22 08:13:08 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	ft_zoom(t_fractal *fractal, int x, int y, int zoom_in_out)
 		*offset_y = (y / *zoom + *offset_y) - (y / zoom_level);
 		*zoom = zoom_level;
 	}
-	fractal->accuracy = MAX_ITER;
+	// fractal->accuracy = MAX_ITER;
 }
 
 int	ft_mouse_hook(int mouse_code, int x, int y, t_data *data)

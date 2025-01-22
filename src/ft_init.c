@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 12:51:58 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/21 22:05:26 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/22 10:07:46 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	ft_julia_init(t_fractal *f)
 static void	ft_rgb_init(t_rgb *rgb)
 {
 	rgb->red = 123;
-	rgb->greed = 321;
+	rgb->green = 321;
 	rgb->blue = 42;
 }
 
