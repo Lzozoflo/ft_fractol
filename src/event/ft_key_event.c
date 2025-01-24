@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:59:35 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/22 10:07:46 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/23 09:23:50 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,15 @@ static void	ft_accuracy(int keycode, t_fractal *f)
 	if (keycode == NUM_PAD_PLUS)
 	{
 		if (f->accuracy < 420)
-			f->accuracy += 10;
+			f->accuracy += 4;
 	}
 	else if (keycode == NUM_PAD_MINUS)
+	{
 		if (f->accuracy > 12)
 			f->accuracy -= 2;
+	}
+	else if (keycode == NUM_PAD_ENTER)
+		f->accuracy = MAX_ITER;
 }
 
 static void	ft_arrow(int keycode, t_fractal *f)
@@ -81,7 +85,6 @@ static void	ft_change_base_value_rgb(int keycode, t_rgb *rgb)
 	else if (keycode == NUM_PAD_3)
 		rgb->blue -= 2;
 }
-
 
 int	ft_key_press(int keycode, void *param)
 {

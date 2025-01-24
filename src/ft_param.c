@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 08:24:15 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/22 19:09:04 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/23 09:28:29 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	ft_help_key(void)
 	ft_printf("|  Zoom out (on target) : RIGHT_CLICK, SCROLL_DOWN, - |\n");
 	ft_printf("|                                                     |\n");
 	ft_printf("|   More details        : num_pad_+, num_pad_-        |\n");
+	ft_printf("|   Reset details       : num_pad_enter               |\n");
 	ft_printf("|                                                     |\n");
 	ft_printf("|   Change color        :                             |\n");
 	ft_printf("|    *     RED   = num_pad_4 = +,   num_pad_1 = -     |\n");
@@ -104,7 +105,7 @@ int	ft_param(int ac, char **param, t_data *data)
 {
 	if (ac == 1)
 		return (ft_help_param());
-	else if (ft_strncmp(param[1], "Help_key", 10) == 0
+	else if (ft_strncmp(param[1], "--Help_key", 10) == 0
 		|| ft_strncmp(param[1], "-H", 2) == 0)
 		return (ft_help_key());
 	else if (ac == 2 && ((ft_strncmp(param[1], "--Julia", 7) == 0) \

@@ -127,6 +127,7 @@ clean			:
 
 
 fclean			:
+			$(RM) $(D_OBJ)
 			$(RM) $(NAME)
 			$(MAKE) -C minilibx-linux clean
 			$(MAKE) -C libft fclean

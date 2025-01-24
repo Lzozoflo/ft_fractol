@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 12:27:58 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/21 21:44:28 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/23 09:23:31 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ inline int	ft_is_arrow_key(int keycode)
 
 inline int	ft_is_accuracy_key(int keycode)
 {
-	return (keycode == NUM_PAD_PLUS || keycode == NUM_PAD_MINUS);
+	return (keycode == NUM_PAD_PLUS || keycode == NUM_PAD_MINUS
+		|| keycode == NUM_PAD_ENTER);
 }
 
 inline int	ft_is_mv_base_point_key(int keycode, int name)

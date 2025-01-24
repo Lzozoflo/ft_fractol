@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:01:01 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/22 10:07:46 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/23 09:23:01 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,18 @@
 
 //		Key_press
 # define ESC 65307
-# define PLUS 61
-# define MINUS 45
+//		Change accuracy / iter
 # define NUM_PAD_PLUS 65451
 # define NUM_PAD_MINUS 65453
+# define NUM_PAD_ENTER 65421
+//		Arrow
 # define UP 65362
 # define DOWN 65364
 # define LEFT 65361
 # define RIGHT 65363
+//		Zoom
+# define PLUS 61
+# define MINUS 45
 //		change value julia
 # define C 99
 # define V 118
