@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:49:15 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/21 21:41:39 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/27 12:02:57 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ double	ft_atod(const char *str, int *int_cap, int *frac_cap)
 	sign = 1.0;
 	fraction = 1.0;
 	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13)  || (str[i] == 32))
+	while ((str[i] >= 9 && str[i] <= 13) || (str[i] == 32))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 		if (str[i++] == '-')
@@ -83,7 +83,7 @@ double	ft_atod(const char *str, int *int_cap, int *frac_cap)
 		res = res * 10.0 + (str[i++] - '0');
 	if (str[i++] == '.')
 	{
-		while ((str[i] >= '0' && str[i] <= '9') && (*frac_cap)-- > 0)
+		while ((str[i] >= '0' && str[i] <= '9' ) && (*frac_cap)-- > 0)
 		{
 			fraction *= 0.1;
 			res += (str[i++] - '0') * fraction;
@@ -102,9 +102,9 @@ double	ft_atod(const char *str, int *int_cap, int *frac_cap)
 // // 	// {
 // // 	// 	return (1);
 // // 	// }
-// 	int	icap = ;
-// 	int	fcap = 5;
+// 	int	icap = 3;
+// 	int	fcap = 9;
 // 	double i = ft_atod("-123.123456789", &icap, &fcap);
-// 	printf("%.10f , %d", i, icap);
+// 	printf("%.10f , %d, %d", i, icap,fcap);
 // 	return 0;
 // }

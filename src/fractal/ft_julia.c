@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 15:01:21 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/22 09:34:49 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/24 15:07:32 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	ft_julia(t_fractal f, int x, int y)
 {
 	double		tmp_real;
 	int			iter;
-
 
 	iter = -1;
 	f.z_real = (x / f.zoom) + f.offset_x;

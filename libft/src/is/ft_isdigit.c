@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:26:50 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/21 19:54:33 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/21 18:29:26 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,13 @@ int	ft_digit_sign(char *str)
 int	ft_digit_sign_float(char *str)
 {
 	char	*start;
-	int		i;
 
-	i = 0;
 	start = str;
 	while (*str)
 	{
-		if (*str == '.')
-			i++;
 		if (ft_isdigit(*str))
+			str++;
+		else if (*str == ' ')
 			str++;
 		else if (*str == '-' || *str == '+')
 		{
@@ -88,7 +86,7 @@ int	ft_digit_sign_float(char *str)
 			else
 				return (0);
 		}
-		else if (*str == '.' && i != 2 && str != start
+		else if (*str == '.' && str != start
 			&& ft_isdigit(*(str - 1)) && ft_isdigit(*(str + 1)))
 			str++;
 		else

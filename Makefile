@@ -1,7 +1,7 @@
 .PHONY: all clean fclean re f fclear c clear libmlx libft
 
 NAME			=	fractol
-cc				=	cc
+CC				=	cc
 CFLAGS			=	-Wall -Wextra -Werror -MMD -MP -Ofast
 CFLAGSS			=	-Weverything -Wno-padded
 RM				=	rm -fr
@@ -49,9 +49,8 @@ SRC_FRACTAL		=		ft_burning_ship.c	\
 						ft_julia.c
 
 
-NAME_LIBMLX		=		./minilibx-linux/libmlx_Linux.a
-MLX_FLAG		=		-Lminilibx-linux -lmlx -lX11 -lXext -lbsd -lm
-MLX_FLAG_I		=		-Imlx_linux -Iminilibx-linux
+MLX_FLAG		=		-Lminilibx-linux -lmlx -lX11 -lXext
+MLX_FLAG_I		=		-Iminilibx-linux
 
 
 #############################################################################################
@@ -100,11 +99,9 @@ all : libmlx libft $(NAME)
 $(NAME)			:	$(OBJS)
 			$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAG) $(NAME_LIB) -o $(NAME)
 
-
 $(D_OBJ)%.o		:	$(D_SRC)%.c Makefile $(INCS)
 			@mkdir -p $(dir $@)
 			$(CC) $(CFLAGS) -c $< -o $@ -I $(D_INC) $(MLX_FLAG_I) -I $(D_INC_LIBFT)
-
 
 libmlx			:
 			$(MAKE) -C minilibx-linux

@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 08:24:15 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/23 09:28:29 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/27 10:13:56 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_help_param(void)
 	ft_printf("|                                                     |\n");
 	ft_printf("|   Setting Key : --Help_key, -H                      |\n");
 	ft_printf("|                                                     |\n");
-	ft_printf("|   Fractal Available :                               |\n");
+	ft_printf("|   Fractal Param Available :                         |\n");
 	ft_printf("|   --Mandelbrot, -M                                  |\n");
 	ft_printf("|   --Julia, -J  >>  Optional   <-/+1.3>   <-/+1.3>   |\n");
 	ft_printf("|   --Burning_ship, -B                                |\n");
