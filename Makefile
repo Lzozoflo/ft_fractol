@@ -99,7 +99,7 @@ all : libmlx libft $(NAME)
 $(NAME)			:	$(OBJS)
 			$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAG) $(NAME_LIB) -o $(NAME)
 
-$(D_OBJ)%.o		:	$(D_SRC)%.c Makefile $(INCS)
+$(D_OBJ)%.o		:	$(D_SRC)%.c Makefile $(INCS) $(NAME_LIB)
 			@mkdir -p $(dir $@)
 			$(CC) $(CFLAGS) -c $< -o $@ -I $(D_INC) $(MLX_FLAG_I) -I $(D_INC_LIBFT)
 
@@ -147,6 +147,3 @@ fclear			:	fclean
 
 
  -include $(DEPS)
-
-# debug-pierre-copyright :
-# 	$(MAKE) --no-print-directory $(NAME) CFLAGS="$(CFLAGS_MORE)" CC="clang"

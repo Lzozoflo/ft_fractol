@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 08:24:15 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/27 10:13:56 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/27 18:01:40 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_help_key(void)
 	ft_printf("|  Zoom in (on target)  : LEFT_CLICK, SCROLL_UP, +    |\n");
 	ft_printf("|  Zoom out (on target) : RIGHT_CLICK, SCROLL_DOWN, - |\n");
 	ft_printf("|                                                     |\n");
-	ft_printf("|   More details        : num_pad_+, num_pad_-        |\n");
+	ft_printf("|   Details             : num_pad_+, num_pad_-        |\n");
 	ft_printf("|   Reset details       : num_pad_enter               |\n");
 	ft_printf("|                                                     |\n");
 	ft_printf("|   Change color        :                             |\n");
@@ -50,10 +50,10 @@ int	ft_help_param(void)
 	ft_printf("|                                                     |\n");
 	ft_printf("|   Fractal Param Available :                         |\n");
 	ft_printf("|   --Mandelbrot, -M                                  |\n");
-	ft_printf("|   --Julia, -J  >>  Optional   <-/+1.3>   <-/+1.3>   |\n");
+	ft_printf("|   --Julia, -J  >>     <-/+1.123>     <-/+1.123>     |\n");
 	ft_printf("|   --Burning_ship, -B                                |\n");
 	ft_printf("|                                                     |\n");
-	ft_printf("|   Exemple : ./fractol --Julia -1.453 1.589          |\n");
+	ft_printf("|   Exemple : ./fractol --Julia 0.285  0.013          |\n");
 	ft_printf("|                                                     |\n");
 	ft_printf("+-----------------------------------------------------+\n");
 	return (0);
@@ -69,15 +69,11 @@ int	ft_julia_param(t_data *data, char **param)
 	i_cap = 1;
 	f_cap = 3;
 	if (!(ft_digit_sign_float(param[2]) && ft_digit_sign_float(param[3])))
-		return (1);
-	param1 = ft_atod(param[2], &i_cap, &f_cap);
-	if (i_cap != 0 || f_cap != 0)
 		return (0);
+	param1 = ft_atod(param[2]);
 	i_cap = 1;
 	f_cap = 3;
-	param2 = ft_atod(param[3], &i_cap, &f_cap);
-	if (i_cap != 0 || f_cap != 0)
-		return (0);
+	param2 = ft_atod(param[3]);
 	data->fractal.c_real = param1;
 	data->fractal.c_imag = param2;
 	data->name = JULIA_WITH_PARAM;

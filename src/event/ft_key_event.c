@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:59:35 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/23 09:23:50 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/27 16:08:55 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ static void	ft_accuracy(int keycode, t_fractal *f)
 	if (keycode == NUM_PAD_PLUS)
 	{
 		if (f->accuracy < 420)
-			f->accuracy += 4;
+			f->accuracy += 8;
 	}
 	else if (keycode == NUM_PAD_MINUS)
 	{
 		if (f->accuracy > 12)
-			f->accuracy -= 2;
+			f->accuracy -= 4;
 	}
 	else if (keycode == NUM_PAD_ENTER)
 		f->accuracy = MAX_ITER;

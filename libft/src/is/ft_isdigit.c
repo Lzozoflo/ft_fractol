@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:26:50 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/21 18:29:26 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/27 15:08:26 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,29 +68,67 @@ int	ft_digit_sign(char *str)
 	return (1);
 }
 
-int	ft_digit_sign_float(char *str)
+int	ft_len_frist_part(const char *str)
 {
-	char	*start;
+	int	i;
 
-	start = str;
-	while (*str)
+	i = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || (str[i] == 32))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	return (i);
+}
+
+int	ft_digit_sign_float(const char *str)
+{
+	int	i;
+	int	has_digit;
+	int	has_decimal;
+
+	has_digit = 0;
+	has_decimal = 0;
+	i = ft_len_frist_part(str);
+	while (str[i])
 	{
-		if (ft_isdigit(*str))
-			str++;
-		else if (*str == ' ')
-			str++;
-		else if (*str == '-' || *str == '+')
+		if (str[i] >= '0' && str[i] <= '9')
+			has_digit = 1;
+		else if (str[i] == '.')
 		{
-			if (ft_isdigit(*(str + 1)) && (str == start || *(str - 1) == ' '))
-				str++;
-			else
+			if (has_decimal)
 				return (0);
+			has_decimal = 1;
 		}
-		else if (*str == '.' && str != start
-			&& ft_isdigit(*(str - 1)) && ft_isdigit(*(str + 1)))
-			str++;
 		else
 			return (0);
+		i++;
 	}
-	return (1);
+	return (has_digit);
 }
+
+// int	ft_digit_sign_float(char *str)
+// {
+// 	char	*start;
+
+// 	start = str;
+// 	while (*str)
+// 	{
+// 		if (ft_isdigit(*str))
+// 			str++;
+// 		else if (*str == ' ')
+// 			str++;
+// 		else if (*str == '-' || *str == '+')
+// 		{
+// 			if (ft_isdigit(*(str + 1)) && (str == start || *(str - 1) == ' '))
+// 				str++;
+// 			else
+// 				return (0);
+// 		}
+// 		else if (*str == '.' && str != start
+// 			&& ft_isdigit(*(str - 1)) && ft_isdigit(*(str + 1)))
+// 			str++;
+// 		else
+// 			return (0);
+// 	}
+// 	return (1);
+// }
