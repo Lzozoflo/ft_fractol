@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 12:39:37 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/22 10:07:46 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/30 11:35:21 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ static int	ft_color(int iter, t_fractal f, t_rgb rgb)
 
 	if (iter == f.accuracy)
 		return (0x000000);
-	r = (iter * rgb.red) % 256;
-	g = (iter * rgb.green) % 256;
-	b = (iter * rgb.blue) % 256;
+	r = (unsigned char)((unsigned int)iter * (unsigned int)rgb.red) % 256;
+	g = (unsigned char)((unsigned int)iter * (unsigned int)rgb.green) % 256;
+	b = (unsigned char)((unsigned int)iter * (unsigned int)rgb.blue) % 256;
 	return ((int)((r << 16) | (g << 8) | b));
 }
 

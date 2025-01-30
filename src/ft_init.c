@@ -6,7 +6,7 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 12:51:58 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/27 18:04:10 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/30 09:53:10 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@ static void	ft_hook_event(t_data *data)
 
 static void	ft_fractol_init(t_fractal *f)
 {
-	f->zoom = 300;
-	f->offset_x = -1.65;
-	f->offset_y = -1.75;
-	f->c_imag = 0.500;
-	f->c_real = -0.500;
+	f->zoom = 3.5;
+	f->offset_x = -1.75;
+	f->offset_y = 1.75;
+	f->c_real = 0.285;
+	f->c_imag = 0.01;
 	f->accuracy = MAX_ITER;
 }
 
 static void	ft_julia_init(t_fractal *f)
 {
-	f->zoom = 300;
-	f->offset_x = -1.65;
-	f->offset_y = -1.75;
+	f->zoom = 3.5;
+	f->offset_x = -1.75;
+	f->offset_y = 1.75;
 	f->accuracy = MAX_ITER;
 }
 

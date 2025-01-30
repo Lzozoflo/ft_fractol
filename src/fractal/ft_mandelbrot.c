@@ -6,14 +6,14 @@
 /*   By: fcretin <fcretin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:18:07 by fcretin           #+#    #+#             */
-/*   Updated: 2025/01/22 09:18:22 by fcretin          ###   ########.fr       */
+/*   Updated: 2025/01/30 10:11:27 by fcretin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fractol.h"
 #include "libft.h"
 
-int	ft_mandelbrot(t_fractal	f, int x, int y)
+int	ft_mandelbrot(t_fractal f, int x, int y)
 {
 	double		tmp_real;
 	int			iter;
@@ -21,8 +21,8 @@ int	ft_mandelbrot(t_fractal	f, int x, int y)
 	iter = -1;
 	f.z_real = 0.0;
 	f.z_imag = 0.0;
-	f.c_real = (x / f.zoom) + f.offset_x;
-	f.c_imag = (y / f.zoom) + f.offset_y;
+	f.c_real = x * (f.zoom / WIN_SIZE) + f.offset_x;
+	f.c_imag = -(y * (f.zoom / WIN_SIZE) - f.offset_y);
 	while (++iter < f.accuracy)
 	{
 		tmp_real = (f.z_real * f.z_real) - (f.z_imag * f.z_imag) + f.c_real;
